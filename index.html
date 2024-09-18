@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Calculator with Voice Input</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div id="display" class="display">
+            <div id="display-content" class="display-content"></div> <!-- Inner div for typing effect -->
+        </div>
+        <div class="buttons">
+            <button onclick="clearWelcomeMessage(); appendNumber('7')">7</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('8')">8</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('9')">9</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('/')">/</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('4')">4</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('5')">5</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('6')">6</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('*')">*</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('1')">1</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('2')">2</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('3')">3</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('-')">-</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('0')">0</button>
+            <button onclick="clearWelcomeMessage(); appendNumber('.')">.</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('%')">%</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('+')">+</button>
+            <button onclick="clearWelcomeMessage(); sqrt()">√</button>
+            <button onclick="clearWelcomeMessage(); appendOperator('(')">(</button>
+            <button onclick="clearWelcomeMessage(); appendOperator(')')">)</button>
+            <button class="calculate" onclick="clearWelcomeMessage(); calculate()">=</button>
+            <button onclick="clearWelcomeMessage(); clearDisplay()">C</button>
+            <button onclick="clearWelcomeMessage(); back()">←</button>
+            <button id="toggleVoice" onclick="clearWelcomeMessage(); toggleVoiceInput()">🔊</button>
+        </div>
+        <div id="voiceCommandBox">
+            <h2>Voice Commands</h2>
+            <div class="command-container">
+                <div class="column symbol-column">
+                    <h3>Symbol</h3>
+                    <div onclick="updateDisplay('+')">+</div>
+                    <div onclick="updateDisplay('-')">-</div>
+                    <div onclick="updateDisplay('*')">*</div>
+                    <div onclick="updateDisplay('/')">/</div>
+                    <div onclick="updateDisplay('=')">=</div>
+                    <div onclick="updateDisplay('.')">.</div>
+                    <div onclick="clearDisplay()">C</div>
+                    <div onclick="updateDisplay('√')">Root</div>
+                    <div onclick="updateDisplay('%')">%</div>
+                    <div onclick="backspace()">Back</div>
+                    <div onclick="updateDisplay('(')">(</div>
+                </div>
+                <div class="column command-column">
+                    <h3>Command</h3>
+                    <div onclick="updateDisplay('+')">Add or Positive</div>
+                    <div onclick="updateDisplay('-')">Subtract or Negative</div>
+                    <div onclick="updateDisplay('*')">Multiply or Into</div>
+                    <div onclick="updateDisplay('/')">Divide</div>
+                    <div onclick="updateDisplay('=')">Equal</div>
+                    <div onclick="updateDisplay('.')">Point</div>
+                    <div onclick="clearDisplay()">Clear</div>
+                    <div onclick="updateDisplay('√')">Root</div>
+                    <div onclick="updateDisplay('%')">Percent</div>
+                    <div onclick="backspace()">Back</div>
+                    <div onclick="updateDisplay('(')">Open</div>
+                </div>
+                <div class="column symbol-column">
+                    <h3>Symbol</h3>
+                    <div onclick="updateDisplay('0')">0</div>
+                    <div onclick="updateDisplay('1')">1</div>
+                    <div onclick="updateDisplay('2')">2</div>
+                    <div onclick="updateDisplay('3')">3</div>
+                    <div onclick="updateDisplay('4')">4</div>
+                    <div onclick="updateDisplay('5')">5</div>
+                    <div onclick="updateDisplay('6')">6</div>
+                    <div onclick="updateDisplay('7')">7</div>
+                    <div onclick="updateDisplay('8')">8</div>
+                    <div onclick="updateDisplay('9')">9</div>
+                    <div onclick="updateDisplay(')')">)</div>
+                </div>
+                <div class="column command-column">
+                    <h3>Command</h3>
+                    <div onclick="updateDisplay('0')">Zero</div>
+                    <div onclick="updateDisplay('1')">One</div>
+                    <div onclick="updateDisplay('2')">Two</div>
+                    <div onclick="updateDisplay('3')">Three</div>
+                    <div onclick="updateDisplay('4')">Four</div>
+                    <div onclick="updateDisplay('5')">Five</div>
+                    <div onclick="updateDisplay('6')">Six</div>
+                    <div onclick="updateDisplay('7')">Seven</div>
+                    <div onclick="updateDisplay('8')">Eight</div>
+                    <div onclick="updateDisplay('9')">Nine</div>
+                    <div onclick="updateDisplay(')')">Close</div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <!-- Popup Message -->
+    <div id="popupMessage" class="popup-message">
+        <div class="popup-content">
+            <h2>Welcome to the Dynamic Calculator!</h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

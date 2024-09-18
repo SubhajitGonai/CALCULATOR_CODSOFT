@@ -1,0 +1,322 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #252525;
+    border: 10px solid #363636; /* Violet border color */
+    outline: 1px solid #ffffff91;  /* First outline (lighter violet) */
+    outline-offset: -10px;       /* Adjusts the position of the outline */
+    box-shadow: 
+        -4px -4px 10px rgba(32, 32, 32, 0.5),   /* Outer top-left shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.541),   /* Outer bottom-right shadow */
+        inset 4px 4px 10px rgba(0, 0, 0, 0.623),  /* Inner top-left shadow */
+        inset -4px -4px 10px rgba(32, 32, 32, 0.5); /* Inner bottom-right shadow */
+    border-radius: 20px; /* Softly rounded corners for the rectangle */
+    overflow: hidden;
+    width: 320px;
+    max-width: 350px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.display {
+    width: 280px; /* Increase the width */
+    height: 100px; /* Increase the height */
+    max-height: 150px; /* Adjust the max height accordingly */
+    background-color: #252525;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 1.2em;
+    text-align: right;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    border: 2px solid #00ffff; /* Add border */
+    outline: 2px solid #0408ff; /* Add outline */
+    transition: border-color 0.5s ease, outline-color 0.5s ease; /* Animation for border and outline */
+}
+
+.display:hover {
+    border-color: #8400ff; /* Change border color on hover */
+    outline-color: #ffffff; /* Change outline color on hover */
+}
+
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr); /* Define rows */
+    gap: 3px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #00ffff; /* Cyan background */
+    border: 2px solid #1900ff; /* Dark blue border */
+    color: #000000; /* Black text color */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1.1em; /* Slightly larger font */
+    font-weight: bold; /* Bold text */
+    padding: 12px; /* Adjusted padding for a more substantial feel */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Darker shadow for bold style */
+}
+button:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px); /* Lift effect on hover */
+    border-color: #8400ff; /* Change border color on hover */
+}
+
+button:active {
+    animation: clickEffect 1s ease forwards;
+}
+
+button:focus {
+    border-color: #fbff03 !important; /* Ensure the border color change is applied */
+    animation: focusShadow 1s ease forwards; /* Trigger the shadow animation */
+    outline: none; /* Remove default outline */
+}
+
+@keyframes focusShadow {
+    0% { box-shadow: 0 0 5px 3px rgba(183, 3, 255, 0.5); }
+    100% { box-shadow: none; }
+}
+
+/* Optional click effect animation */
+@keyframes clickEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+
+/* Optional animations */
+@keyframes clickEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+
+/* Adjust the = button */
+button.calculate {
+    grid-row: span 2; /* Make the = button span two rows */
+    height: auto; /* Let the button's height be defined by the grid row span */
+}
+
+@keyframes clickEffect {
+    0% {
+        background-color: #dae0e5;
+        transform: translateY(-2px);
+    }
+    50% {
+        background-color: #e2e6ea;
+        transform: translateY(0);
+    }
+    100% {
+        background-color: #f8f9fa;
+        transform: translateY(0);
+    }
+}
+
+@keyframes focusEffect {
+    0% {
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+
+/* Default button style */
+#toggleVoice {
+    background-color: #00ffff; /* Cyan background */
+    border: 2px solid #1900ff;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+#toggleVoice:hover {
+    background-color: #dee2e6;
+    transform: translateY(-2px);
+}
+
+/* Active effect */
+#toggleVoice:active {
+    animation: clickEffect 1s ease forwards;
+}
+
+/* Focus effect */
+#toggleVoice:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgb(0, 123, 255);
+}
+
+/* Green shadow when voice input is active */
+.voice-input-active {
+    box-shadow: 0 0 3px 2px rgb(1, 255, 1) !important;
+}
+
+/* Red shadow when voice input is inactive */
+.voice-input-inactive {
+    box-shadow: 0 0 3px 2px red !important;
+}
+
+/* Base styling for the voice command box */
+#voiceCommandBox {
+    position: fixed;
+    right: -350px; /* Start hidden off-screen */
+    top: 63px;
+    width: 320px; /* Match the calculator width */
+    height: 490px; /* Match the calculator height */
+    background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Gradient background */
+    border: 10px solid #363636; /* Matching the calculator's border color */
+    outline: 1px solid #ffffff91;  /* Lighter outline, similar to the calculator */
+    outline-offset: -10px;       /* Adjusts the position of the outline */
+    box-shadow: 
+        -4px -4px 10px rgba(32, 32, 32, 0.5),   /* Outer top-left shadow */
+        4px 4px 10px rgba(0, 0, 0, 0.541),   /* Outer bottom-right shadow */
+        inset 4px 4px 10px rgba(0, 0, 0, 0.623),  /* Inner top-left shadow */
+        inset -4px -4px 10px rgba(32, 32, 32, 0.5); /* Inner bottom-right shadow */
+    border-radius: 20px; /* Softly rounded corners for the box */
+    padding: 10px; /* Match the padding of the calculator */
+    box-sizing: border-box;
+    z-index: 1000;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: right 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Heading styling */
+#voiceCommandBox h2 {
+    margin: 0;
+    padding-bottom: 5px; /* Reduced padding for more space */
+    text-align: center;
+    color: #ffffff; /* White text color */
+    font-size: 16px; /* Further reduced font size for the heading */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+}
+
+/* Show the box with slide-in animation */
+#voiceCommandBox.show {
+    right: 100px; /* Move it into view */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hide the box with slide-out animation */
+#voiceCommandBox.hide {
+    right: -350px; /* Move it off-screen */
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Additional styling for command columns and items */
+.command-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+    gap: 4px; /* Further reduced space between columns */
+}
+
+.column {
+    color: #ffffff; /* White text for better contrast */
+    text-align: center;
+}
+
+.symbol-column, .command-column {
+    border-right: 1px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+    padding-right: 4px; /* Reduced padding */
+}
+
+.symbol-column:last-child, .command-column:last-child {
+    border-right: none;
+}
+
+.column h3 {
+    margin-top: 3px; /* Adjust the top margin to move it downward */
+    color: #d1d1ff; /* Lighter shade for headers */
+    font-size: 12px; /* Further reduced font size */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+}
+
+.column div {
+    display: flex; /* Use flexbox to ensure alignment */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Align items horizontally */
+    padding: 4px 0; /* Further reduced space between items */
+    font-size: 11px; /* Further reduced font size */
+    height: 28px; /* Further reduced height for each row */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Lighter lines between items */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.column div:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+    transform: translateX(5px); /* Slight move on hover */
+}
+
+.column div:last-child {
+    border-bottom: none; /* Remove the bottom line for the last item */
+}
+
+/* Popup message styling */
+.popup-message {
+    position: fixed;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(51, 51, 51, 0); /* Transparent background */
+    color: #f5efbb;
+    padding: 15px 25px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1000;
+}
+
+/* Show popup message */
+.popup-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Typing animation */
+.typing-effect {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+    font-size: 0.8em; /* Adjust the font size to make the text smaller */
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
